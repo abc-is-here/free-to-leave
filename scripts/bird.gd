@@ -20,7 +20,6 @@ func _physics_process(delta):
 
 	velocity.x = direction * speed
 
-	# --- Flying logic ---
 	var space_held = Input.is_action_pressed("space")
 	var space_just_pressed = Input.is_action_just_pressed("space")
 
@@ -30,12 +29,11 @@ func _physics_process(delta):
 		is_flying = true
 		takeoff_played = true
 	elif space_held and not is_on_floor():
-		velocity.y = jump_force * 0.5  # Hold to glide or flap slowly upward
+		velocity.y = jump_force * 0.5
 		is_flying = true
 	elif not space_held:
 		is_flying = false
 
-	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -44,11 +42,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# Sprite flip
 	if direction != 0:
 		sprite.flip_h = direction < 0
 
-	# --- Animation logic ---
 	if not is_on_floor():
 		if is_flying and not takeoff_played:
 			BirdAnimator.play("BirdFlying")
