@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://e1nhfho22g2l"]
+
+[ext_resource type="PackedScene" uid="uid://dknrp2v0v6xgr" path="res://Scenes/bird.tscn" id="1_a02cp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a02cp"]
+size = Vector2(1951, 217)
+
+[node name="World" type="Node2D"]
+
+[node name="bird" parent="." instance=ExtResource("1_a02cp")]
+scale = Vector2(5, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -46.0
+offset_top = 887.0
+offset_right = 1931.0
+offset_bottom = 1136.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(964, 995)
+shape = SubResource("RectangleShape2D_a02cp")
