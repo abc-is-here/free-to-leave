@@ -1,23 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://e1nhfho22g2l"]
+[gd_scene load_steps=4 format=3 uid="uid://e1nhfho22g2l"]
 
 [ext_resource type="PackedScene" uid="uid://dknrp2v0v6xgr" path="res://Scenes/bird.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://dgcacurw0q57r" path="res://Scenes/cat.tscn" id="3_5a7ea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a02cp"]
-size = Vector2(1951, 217)
+size = Vector2(1948, 217)
 
 [node name="World" type="Node2D"]
 
 [node name="bird" parent="." instance=ExtResource("1_a02cp")]
 scale = Vector2(5, 5)
+max_fall_speed = 700.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -43)
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -46.0
-offset_top = 887.0
-offset_right = 1931.0
-offset_bottom = 1136.0
+offset_left = -20.0
+offset_top = 768.0
+offset_right = 1935.0
+offset_bottom = 1017.0
+color = Color(0.815659, 0.17009, 3.85046e-07, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(964, 995)
+position = Vector2(955, 876)
 shape = SubResource("RectangleShape2D_a02cp")
+
+[node name="cat" parent="." instance=ExtResource("3_5a7ea")]
+position = Vector2(141, 280)
+scale = Vector2(15, 15)
